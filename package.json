@@ -1,0 +1,27 @@
+{
+  "name": "full_stack",
+  "version": "1.0.0",
+  "description": "start tutorial",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SangPY/SangDT_BackEnd_NodeJs2025.git"
+  },
+  "keywords": [
+    "nodejs",
+    "react"
+  ],
+  "author": "Thanh Sang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SangPY/SangDT_BackEnd_NodeJs2025/issues"
+  },
+  "homepage": "https://github.com/SangPY/SangDT_BackEnd_NodeJs2025#readme",
+  "dependencies": {
+    "express": "4.18.2"
+  }
+}
