@@ -1,9 +1,13 @@
 const express = require('express')
 // import express from 'express';
 const path = require('path');
+require('dotenv').config();
 
-const app = express()
-const port = 8080
+// console.log('check env:' , process.env);
+
+const app = express();
+const port = process.env.PORT || 8888;
+const hostname = process.env.HOST_NAME
 
 //config tempalte engine
 app.set('views', path.join(__dirname, 'views'))
@@ -24,7 +28,6 @@ app.get('/ngan', (req, res) => {
 app.get('/sample', (req, res) => {
   res.render('sample.ejs')
 })
-
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
