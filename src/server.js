@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/sang', (req, res) => {
-  res.send('Hello Sang routes!')
+  res.send('Hello Sang routes nodemon!')
 })
 
 app.get('/ngan', (req, res) => {
