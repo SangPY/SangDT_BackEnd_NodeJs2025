@@ -1,36 +1,16 @@
-const express = require('express')
-// import express from 'express';
-const path = require('path');
 require('dotenv').config();
-
-// console.log('check env:' , process.env);
-
+const express = require('express')
+const path = require('path');
+const configViewEngine = require('./config/viewEngine');
+const webRoutes = require('./routes/web');
 const app = express();
 const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME
 
-//config tempalte engine
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'ejs')
+configViewEngine(app);
 
-app.use(express.static(path.join(__dirname, 'public'))) 
-
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.get('/sang', (req, res) => {
-  res.send('Hello Sang routes nodemon!')
-})
-
-app.get('/ngan', (req, res) => {
-  res.send('<h1>Hello Ngan routes!</h1>')
-})
-
-app.get('/sample', (req, res) => {
-  res.render('sample.ejs')
-})
+//khai bao routes
+app.use('/', webRoutes);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
