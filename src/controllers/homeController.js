@@ -6,7 +6,12 @@ const getSang = (req, res) => {
   res.send('Hello Sang routes nodemon! MVC')
 }
 
+const getNodejs = (req, res) => {
+  res.render('sample.ejs')
+}
+
 module.exports = {
     getHomepage,
-    getSang
+    getSang,
+    getNodejs
 }
