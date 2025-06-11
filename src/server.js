@@ -7,28 +7,19 @@ const { connect } = require('http2');
 const app = express();
 const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME
-const mysql=require('mysql2');
+const connection = require('./config/database') 
 
 configViewEngine(app);
 
 //khai bao routes
 app.use('/', webRoutes);
 
-//test connection
-const connection=mysql.createConnection({ 
-  host: 'localhost', 
-  user: 'root', 
-  database: 'SangDT_Nodejs', 
-  port: 3307, 
-  password: '123456'
-  }); 
-  
 // simple query
 connection.query(
   'select * from Users u',
   function (err, results, fields) {
     console.log(results);
-    console.log(fields);
+    // console.log(fields);
   }
 );
 
