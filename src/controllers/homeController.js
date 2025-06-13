@@ -30,8 +30,26 @@ const getNodejs = (req, res) => {
 }
 
 const postCreateUser = (req, res) => {
-  console.log("Req.body", req.body);
-  res.send('create a new user successful')
+  //console.log("Req.body", req.body);
+
+  let email = req.body.emailId;
+  let name = req.body.nameId;
+  let city = req.body.cityId;
+
+  console.log ("data: ", email, name, city);
+
+  connection.query(
+    ` INSERT INTO Users (email, name, city)
+      VALUES (?,?,?) `,
+      [email, name, city],
+      function (err, results) {
+        console.log (results);
+        res.send(' Create user succeed !');
+      }
+  );
+
+  //INSERT INTO Users (emai)
+  //res.send('create a new user successful')
 }
 
 module.exports = {
