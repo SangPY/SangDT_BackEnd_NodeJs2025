@@ -29,7 +29,11 @@ const getNodejs = (req, res) => {
   res.render('sample.ejs')
 }
 
-const postCreateUser = (req, res) => {
+const getCreatePage = (req, res) => {
+  res.render('create.ejs')
+}
+
+const postCreateUser = async (req, res) => {
   //console.log("Req.body", req.body);
 
   let email = req.body.emailId;
@@ -38,16 +42,24 @@ const postCreateUser = (req, res) => {
 
   console.log ("data: ", email, name, city);
 
-  connection.query(
-    ` INSERT INTO Users (email, name, city)
-      VALUES (?,?,?) `,
-      [email, name, city],
-      function (err, results) {
-        console.log (results);
-        res.send(' Create user succeed !');
-      }
+  // connection.query(
+  //   ` INSERT INTO Users (email, name, city)
+  //     VALUES (?,?,?) `,
+  //     [email, name, city],
+  //     function (err, results) {
+  //       console.log (results);
+  //       res.send(' Create user succeed !');
+  //     }
+  // );
+
+  let [results, fields] = await connection.query (
+    `INSERT INTO Users (email, name, city) VALUES (?,?,?)`,[email, name, city]
   );
 
+  //const [results, fields] = await connection.query('select * from Users u');
+  console.log('check result', results);
+
+  res.send(' Created user succeed!')
   //INSERT INTO Users (emai)
   //res.send('create a new user successful')
 }
@@ -56,5 +68,6 @@ module.exports = {
     getHomepage,
     getSang,
     getNodejs,
-    postCreateUser
+    postCreateUser,
+    getCreatePage
 }
