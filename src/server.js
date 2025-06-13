@@ -9,6 +9,10 @@ const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME
 const connection = require('./config/database') 
 
+//config req.body
+app.use(express.json())
+app.use(express.urlencoded({ extended : true}))
+
 configViewEngine(app);
 
 //khai bao routes
