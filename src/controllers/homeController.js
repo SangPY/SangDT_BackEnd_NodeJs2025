@@ -16,9 +16,11 @@ const connection = require('../config/database')
 //   );
 // }
 
-const getHomepage = (req, res) => {
-  
-  return res.render('home.ejs')
+const getHomepage = async (req, res) => {
+  let [results, fields] = await connection.query(
+    'Select * from Users'
+  );
+  return res.render('home.ejs', {listUsers: results})
 }
 
 const getSang = (req, res) => {
