@@ -1,5 +1,5 @@
 const connection = require('../config/database')
-const {getAllUsers} = require('../services/CRUDService')
+const {getAllUsers, getUserById} = require('../services/CRUDService')
 // const getHomepage = (req, res) => {
 //   let users = [];
 
@@ -35,13 +35,10 @@ const getCreatePage = (req, res) => {
 
 const getUpdatePage = async (req, res) => {
   const userId = req.params.userid;
-  // console.log("param", req.params, userId)
-  let [results, fields] = await connection.query(`select * from Users where id = ? `, [userId]);
-  console.log('result', results);
+  
+  let user = await getUserById(userId);
 
-  let user  = results && results.length > 0 ? results[0] : {};
-
-  res.render('edit.ejs', { userEdit : user})
+  res.render('edit.ejs', { userEdit : user}) // x <- y
 }
 
 const postCreateUser = async (req, res) => {
