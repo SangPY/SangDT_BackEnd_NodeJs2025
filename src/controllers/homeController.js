@@ -33,6 +33,12 @@ const getCreatePage = (req, res) => {
   res.render('create.ejs')
 }
 
+const getUpdatePage = (req, res) => {
+  const userId = req.params.userId;
+  console.log("param", req.params)
+  res.render('edit.ejs')
+}
+
 const postCreateUser = async (req, res) => {
   //console.log("Req.body", req.body);
 
@@ -69,5 +75,6 @@ module.exports = {
     getSang,
     getNodejs,
     postCreateUser,
-    getCreatePage
+    getCreatePage,
+    getUpdatePage
 }

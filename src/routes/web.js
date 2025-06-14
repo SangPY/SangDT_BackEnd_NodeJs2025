@@ -1,14 +1,18 @@
 const express = require('express');
-const {getHomepage, getSang, getNodejs, postCreateUser, getCreatePage} = require('../controllers/homeController');
+const {getHomepage, getSang, getNodejs, postCreateUser, 
+    getCreatePage, getUpdatePage
+} = require('../controllers/homeController');
 const router = express.Router();
 
 router.get('/', getHomepage);
 
 router.get('/sang', getSang);
 
-router.get('/nodejs', getNodejs)
+router.get('/nodejs', getNodejs);
 
-router.get('/create', getCreatePage)
+router.get('/create', getCreatePage);
+
+router.get('/update/:userid', getUpdatePage);
 
 router.post('/create-user', postCreateUser );
 
